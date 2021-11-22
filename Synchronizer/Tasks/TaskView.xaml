@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Synchronizer.Tasks.TaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:checkTree="clr-namespace:Synchronizer.CheckTree"
+             xmlns:cel="clr-namespace:WpfControls;assembly=WpfControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600" Name="syncPageWindow" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
+                <Setter Property="IsExpanded" Value="False" />
+            </Style>
+
+            <HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" ItemsSource="{Binding Children, Mode=OneTime}" >
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Focusable="False" IsChecked="{Binding IsChecked}" VerticalAlignment="Center" />
+                    <Label Content="{Binding NameWithFlags, Mode=OneTime}" Background="{Binding Background, Mode=OneTime}" Margin="2,0" Padding="0"/>                    
+                </StackPanel>
+            </HierarchicalDataTemplate>            
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox Height="30"  HorizontalAlignment="Stretch" Margin="12,13,79,0" Name="comboBoxLeft" VerticalAlignment="Top" FontSize="16" IsEditable="True" IsReadOnly="False"
+                  ItemsSource="{Binding ElementName=syncPageWindow, Path=LeftLastPaths}" Text="{Binding ElementName=syncPageWindow, Path=LeftPath}" />
+        <Button Content="Browse" Height="30" HorizontalAlignment="Right" Margin="0,13,6,0" Name="button3" VerticalAlignment="Top" Width="68" Focusable="False" BorderBrush="#AAAAAA" Click="leftBrowse_Click" />
+        <ComboBox Height="30" HorizontalAlignment="Stretch" Margin="5,13,5,0" Name="comboBoxDirection" VerticalAlignment="Top" Grid.Column="1" SelectedIndex="0" IsEditable="True" IsReadOnly="True" FontSize="16" >
+            <Label Content="---&gt;" />
+            <Label Content="&lt;---" />
+        </ComboBox>
+        <ComboBox Height="30" HorizontalAlignment="Stretch" Margin="12,13,79,0" Name="comboBoxRight" VerticalAlignment="Top" Grid.Column="2" IsEditable="True" FontSize="16"
+                  ItemsSource="{Binding ElementName=syncPageWindow, Path=RightLastPaths}" Text="{Binding ElementName=syncPageWindow, Path=RightPath}"/>
+        <Button Content="Browse" Height="30" Margin="0,13,6,0" Name="button4" VerticalAlignment="Top" Grid.Column="2" HorizontalAlignment="Right" Width="68" Focusable="False" BorderBrush="#AAAAAA" Click="rightBrowse_Click" />
+
+
+        <ScrollViewer HorizontalAlignment="Stretch" Margin="12,58,0,10" Name="scrollViewer1" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible">
+            <TreeView x:Name="lefttree" ItemContainerStyle="{StaticResource TreeViewItemStyle}" ItemTemplate="{StaticResource CheckBoxItemTemplate}" PreviewMouseWheel="tree_MouseWheel" >
+                <TreeView.ItemsSource>
+                    <Binding ElementName="syncPageWindow" Path="LeftList" />
+                </TreeView.ItemsSource>
+            </TreeView>
+        </ScrollViewer>
+
+        <ScrollViewer HorizontalAlignment="Stretch" Margin="0,58,12,10" Name="scrollViewer2" VerticalAlignment="Stretch" Grid.Column="2" HorizontalScrollBarVisibility="Visible">
+            <TreeView x:Name="righttree" ItemContainerStyle="{StaticResource TreeViewItemStyle}" ItemTemplate="{StaticResource CheckBoxItemTemplate}"  PreviewMouseWheel="tree_MouseWheel" >
+                <TreeView.ItemsSource>
+                    <Binding ElementName="syncPageWindow" Path="RightList" />
+                </TreeView.ItemsSource>
+            </TreeView>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

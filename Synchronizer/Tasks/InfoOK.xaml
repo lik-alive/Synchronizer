@@ -1,0 +1,11 @@
+﻿<Window x:Class="Synchronizer.Tasks.InfoOK"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{DynamicResource OptionWindowStyle}"
+        Title="Information" Name="infoOKWindow" Height="160" Width="300" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Icon="/Synchronizer;component/Icons/info.ico" >
+    <Grid>
+        <Label Height="60" HorizontalAlignment="Center" Margin="8,0,8,0" VerticalAlignment="Top" FontSize="16" Content="{Binding ElementName=infoOKWindow, Path=Info}" />
+        <Button Content="OK" Height="35" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Name="buttonOK" Width="85" FontSize="16" BorderBrush="#AAAAAA" Click="OK_Click" />
+    </Grid>
+    
+</Window>

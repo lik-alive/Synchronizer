@@ -1,0 +1,13 @@
+﻿<Window x:Class="Synchronizer.Tasks.DeleteFilesDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{DynamicResource OptionWindowStyle}"
+        Title="Task Closing" Name="deleteFileWindow" Height="139" Width="381" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown" Icon="/Synchronizer;component/Icons/info.ico" >
+    <Grid>
+        <Label Height="35" HorizontalAlignment="Center" Margin="8,0,8,0" VerticalAlignment="Top" FontSize="18" Content="Duplicate files deletion?" />
+        <Button Content="OK" Height="35" Margin="10,0,10,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Name="buttonOK" Width="85" FontSize="16" BorderBrush="#AAAAAA" Click="OK_Click" />
+        <Button Content="NO" Height="35" Margin="10,0,10,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Name="buttonNO" Width="85" FontSize="16" BorderBrush="#AAAAAA" Click="NO_Click" />
+        <Button Content="CANCEL" Height="35" Margin="10,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" x:Name="buttonCANCEL" Width="85" FontSize="16" BorderBrush="#AAAAAA" Click="CANCEL_Click" />
+    </Grid>
+
+</Window>
