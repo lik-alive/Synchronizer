@@ -27,11 +27,13 @@ The Synchronizer is distributed as a single exe file (see the Release section).
 - Multitasking
 - Saving and loading synchronization workspaces
 - Selection of synchronization direction
-- Material design interface for all versions of Windows OS
+- Metro style interface for all versions of Windows
 
 ## Installation
 
-Download `Synchronizer.exe` (x86) from the Release section.
+1. Install [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)
+
+2. Download `Synchronizer.exe` (x86) from the Release section.
 
 ## License
 
